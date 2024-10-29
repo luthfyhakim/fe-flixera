@@ -22,10 +22,46 @@
       </div>
 
       <div class="flex flex-col items-center justify-center w-full h-96 ">
-        <div class="text-2xl text-white w-[600px] mb-14 text-center font-bold">Prices start from 54,000/month. See below for our packages and prices.</div>
+        <div class="text-2xl text-white w-[600px] mb-14 text-center font-bold">Prices start from 65,000/month. See below for our packages and prices.</div>
         <NuxtLink to="/dashboard" class="py-4 text-xl font-bold text-white bg-red-800 shadow-2xl hover:bg-red-900 w-60 px-7 rounded-xl ">Start Subscription</NuxtLink> <!-- button -->
       </div>
 
+       <!-- "Sedang Tren Sekarang" Section -->
+       <div class="relative py-10 text-white">
+        <h2 class="mb-6 text-3xl font-bold text-center">Trending Now</h2>
+        <div id="posterCarousel" class="flex gap-4 px-10 overflow-x-scroll">
+          <div class="w-[170px] flex-shrink-0">
+            <img class="object-cover w-full h-auto transition-transform duration-300 rounded-sm cursor-pointer hover:scale-105" src="assets/media/image 87.png" alt="Tuhan, Izinkan Aku Berdosa">
+          </div>
+          <div class="w-[170px] flex-shrink-0">
+            <img class="object-cover w-full h-auto transition-transform duration-300 rounded-sm cursor-pointer hover:scale-105" src="assets/media/image 84.png" alt="The Shadow Strays">
+          </div>
+          <div class="w-[170px] flex-shrink-0">
+            <img class="object-cover w-full h-auto transition-transform duration-300 rounded-sm cursor-pointer hover:scale-105" src="assets/img/mov-exhuma.jpg" alt="The Shadow Strays">
+          </div>
+          <div class="w-[170px] flex-shrink-0">
+            <img class="object-cover w-full h-auto transition-transform duration-300 rounded-sm cursor-pointer hover:scale-105" src="assets/img/mov-new4.jpg" alt="The Shadow Strays">
+          </div>
+          <div class="w-[170px] flex-shrink-0">
+            <img class="object-cover w-full h-auto transition-transform duration-300 rounded-sm cursor-pointer hover:scale-105" src="assets/img/mov-new3.jpg" alt="The Shadow Strays">
+          </div>
+          <div class="w-[170px] flex-shrink-0">
+            <img class="object-cover w-full h-auto transition-transform duration-300 rounded-sm cursor-pointer hover:scale-105" src="assets/img/mov-new1.jpg" alt="The Shadow Strays">
+          </div>
+          <div class="w-[170px] flex-shrink-0">
+            <img class="object-cover w-full h-auto transition-transform duration-300 rounded-sm cursor-pointer hover:scale-105" src="assets/img/mov-new2.jpg" alt="The Shadow Strays">
+          </div>
+          <div class="w-[170px] flex-shrink-0">
+            <img class="object-cover w-full h-auto transition-transform duration-300 rounded-sm cursor-pointer hover:scale-105" src="assets/media/image 88.png" alt="Pay Later">
+          </div>
+          <div class="w-[170px] flex-shrink-0">
+            <img class="object-cover w-full h-auto transition-transform duration-300 rounded-sm cursor-pointer hover:scale-105" src="assets/media/image 79.png" alt="Agak Laen">
+          </div>
+          <div class="w-[170px] flex-shrink-0">
+            <img class="object-cover w-full h-auto transition-transform duration-300 rounded-sm cursor-pointer hover:scale-105" src="assets/media/image 82.png" alt="Love Next Door">
+          </div>
+        </div>
+      </div>
 
       <div class="relative h-auto py-20 text-center text-white bg-black font-lato">
           <h2 class="mb-12 text-3xl font-bold">Subscription Benefits</h2>
@@ -94,3 +130,30 @@
       </div>
     </div>
 </template>
+<script>
+export default {
+  mounted() {
+    const scrollContainer = document.getElementById('posterCarousel');
+    const scrollSpeed = 1; // Adjust speed of scrolling
+    const scrollInterval = 10; // Time interval in milliseconds for scroll movement
+
+    function autoScroll() {
+      scrollContainer.scrollLeft += scrollSpeed;
+      
+      // Jika sudah mencapai akhir, kembali ke awal
+      if (scrollContainer.scrollLeft + scrollContainer.clientWidth >= scrollContainer.scrollWidth) {
+        scrollContainer.scrollLeft = 0;
+      }
+    }
+
+    // Jalankan fungsi autoScroll setiap beberapa milidetik
+    setInterval(autoScroll, scrollInterval);
+  },
+};
+</script>
+<style>
+  #posterCarousel {
+    overflow-x: hidden; /* Hide the horizontal scroll bar */
+    white-space: nowrap; /* Prevent wrapping of images */
+  }
+</style>
