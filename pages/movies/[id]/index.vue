@@ -20,12 +20,10 @@ const { data: movies } = await useAsyncData('genres', async () => {
     <div class="min-h-screen text-white bg-black">
       <div class="relative w-full min-h-screen overflow-y-auto text-left text-white bg-black">
         
-      <!-- Navbar Start -->
       <Navbar />
-      <!-- Navbar End -->
       
         <NuxtLink :to="`/movies/${route.params.id}/playmovie`" class="mt-[60px] w-full max-w-[1440px] mx-auto h-[766px] relative">
-          <img class="object-cover w-full h-[766px]" alt="Background Image" :src="movies.moviesById.image" />
+          <img class="object-cover w-full h-[766px]" alt="Background Image" :src="movies.moviesById.playimg" />
         <div class="absolute inset-0 z-20 flex flex-col items-center justify-center">
           <div class="z-10 flex items-center justify-center w-24 h-24 transition duration-300 bg-transparent rounded-full shadow-lg hover:bg-gray-700">
             <img class="object-cover w-full h-full" alt="Background Image" src="/assets/img/playbuttonn.png" />
@@ -36,7 +34,6 @@ const { data: movies } = await useAsyncData('genres', async () => {
         </div>
         </NuxtLink>
   
-          
           <!-- Movie Details Section -->
           <div class="w-full max-w-[1171px] mx-auto px-6 py-12 text-2xl">
             <div class="relative w-full h-auto">
@@ -57,8 +54,8 @@ const { data: movies } = await useAsyncData('genres', async () => {
           <div class="w-full max-w-[1171px] mx-auto px-6 py-12">
             <h2 class="mb-4 text-3xl font-medium capitalize">Trailer & Ekstra</h2>
             <div class="flex gap-4">
-              <img class="object-cover w-full h-auto max-w-md rounded-md " alt="Trailer Thumbnail" src="/assets/media/trailerimg1.png" />
-              <img class="object-cover w-full h-auto max-w-md rounded-md " alt="Trailer Thumbnail" src="/assets/media/trailerimg2.jpg" />
+              <img class="object-cover w-full h-auto max-w-md rounded-md " alt="Trailer Thumbnail" :src="movies.moviesById.trailerimg1" />
+              <img class="object-cover w-full h-auto max-w-md rounded-md " alt="Trailer Thumbnail" :src="movies.moviesById.trailerimg2" />
             </div>
           </div>
       

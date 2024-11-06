@@ -24,9 +24,7 @@ const { data: moviesByGenre } = await useFetch(`${API}/movies/genre?genre_id=${r
 <template>
   <div class="min-h-screen text-white bg-black">
     
-    <!-- Navbar Start -->
     <Navbar />
-    <!-- Navbar End -->
 
     <div class="flex justify-center w-full h-64 bg-black mt-15 ">
       <div class="flex justify-around  w-[1000px] pt-32">
@@ -34,6 +32,8 @@ const { data: moviesByGenre } = await useFetch(`${API}/movies/genre?genre_id=${r
             v-for="genre in genres.genres"
             :href="`/genres?genre_id=${genre.id}`"
             class="flex items-center justify-center h-12 font-semibold text-black bg-white rounded-lg w-28 hover:bg-red-800 hover:text-white"
+            :class="{ 'bg-red-800 text-white': activeGenre === genre.id }"
+            @click="setActiveGenre(genre.id)"
           >
             {{ genre.name }}
           </a>
@@ -42,15 +42,6 @@ const { data: moviesByGenre } = await useFetch(`${API}/movies/genre?genre_id=${r
 
     <!-- Section Movies Start -->
     <section>
-      <div class="search-bar">
-        <input 
-          type="text" 
-          placeholder="Search movie here!" 
-          class="search-input"
-          v-model="searchQuery"
-        >
-      </div>
-
       <div class="grid grid-cols-6 gap-4 px-10 mt-15 w-[1300px] mx-auto">
         <NuxtLink 
           v-if="!route.query.genre_id"
@@ -60,7 +51,6 @@ const { data: moviesByGenre } = await useFetch(`${API}/movies/genre?genre_id=${r
         >
           <div class="about-movies">
             <img class="movie-img" :src="movie.image" alt="poster-img" />
-            <!-- <div :style="{ backgroundImage: `url(${movie.image})` }" class="w-[130px] h-[180px] bg-cover bg-center rounded-md"></div> -->
             <div class="movie-name"> {{ movie.title }} </div>
             <div class="detail">
               <p class="detail-duration"> {{ movie.duration }}</p>
@@ -77,7 +67,6 @@ const { data: moviesByGenre } = await useFetch(`${API}/movies/genre?genre_id=${r
         >
           <div class="about-movies">
             <img class="movie-img" :src="movie.image" alt="poster-img" />
-            <!-- <div :style="{ backgroundImage: `url(${movie.image})` }" class="w-[130px] h-[180px] bg-cover bg-center rounded-md"></div> -->
             <div class="movie-name"> {{ movie.title }} </div>
             <div class="detail">
               <p class="detail-duration"> {{ movie.duration }}</p>
@@ -89,36 +78,38 @@ const { data: moviesByGenre } = await useFetch(`${API}/movies/genre?genre_id=${r
     </section>
     <!-- Section Movies End -->
 
-    <!-- Footer Start -->
     <Footer />
-    <!-- Footer End -->
   </div>
 </template>
 
+<script>
+export default {
+  data() {
+    return {
+      activeGenre: null,
+      genres: {
+        genres: [
+          { id: 1, name: 'Action' },
+          { id: 2, name: 'Comedy' },
+          { id: 3, name: 'Drama' },
+          { id: 4, name: 'Horror' },
+          { id: 5, name: 'Romance' },
+          { id: 6, name: 'Thriller' },
+          { id: 7, name: 'Fantasy' },
+          { id: 8, name: 'Adventure' },
+        ],
+      },
+    };
+  },
+  methods: {
+    setActiveGenre(id) {
+      this.activeGenre = id;
+    },
+  },
+};
+</script>
+
 <style scoped>
-.search-bar {
-    padding: 50px;
-    padding-top: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center; 
-}
-
-.search-input {
-    width: 500px;
-    border: 1px solid #991b1b;
-    border-radius: 18px; 
-    padding: 8px 5px;
-    color: #991b1b;
-    font-weight: 500; 
-    outline: none;
-}
-
-.search-input::placeholder {
-    color: #6b7280;
-    padding: 10px 10px;
-}
-
 .movies-card {
   width: 11rem;
   height: 18rem;

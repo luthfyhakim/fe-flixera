@@ -50,8 +50,8 @@ const { data: movies } = await useAsyncData('genres', async () => {
         <div class="w-full max-w-[1171px] mx-auto px-6 py-12">
           <h2 class="mb-4 text-3xl font-medium capitalize">Trailer & Ekstra</h2>
           <div class="flex gap-4">
-            <img class="object-cover w-full h-auto max-w-md rounded-md " alt="Trailer Thumbnail" src="/assets/media/trailerimg1.png" />
-            <img class="object-cover w-full h-auto max-w-md rounded-md " alt="Trailer Thumbnail" src="/assets/media/trailerimg2.jpg" />
+            <img class="object-cover w-full h-auto max-w-md rounded-md " alt="Trailer Thumbnail" :src="movies.moviesById.trailerimg1" />
+            <img class="object-cover w-full h-auto max-w-md rounded-md " alt="Trailer Thumbnail" :src="movies.moviesById.trailerimg2" />
           </div>
         </div>
     
